@@ -80,7 +80,7 @@ ui <- page_navbar( # navigation bar
                           maxDate = max(data$DATE_ACHAT), # upper bound in selection
                           autoClose = TRUE # date range closing automatically after selecting
                         ),
-                        checkboxInput("filter", "Filtrer", FALSE),
+                        checkboxInput("filter", "Filtrer", FALSE), # dynamic filter option
                         conditionalPanel(
                           condition = "input.filter == true",
                           selectInput("filter_choice",
@@ -91,11 +91,10 @@ ui <- page_navbar( # navigation bar
                       )
                       ,
                       mainPanel(
-                        plotlyOutput("evolution_plot"),
-                        leafletOutput("map"),
+                        plotlyOutput("evolution_plot"), # graph d'évolution
                         width=8
                       ),
-                      position = c("left"))
+                      position = c("left")) # relative position of sidebarPanel to MainPanel
                   )
                 )
               )
@@ -125,7 +124,7 @@ ui <- page_navbar( # navigation bar
                                     max = max(data$DATE_ACHAT)),
                         width=4),
                       mainPanel(
-                        leafletOutput("map"),
+                        leafletOutput("map"), # map output
                         width=8
                       ),
                       position = c("left") # sidebarPanel left to mainPanel
